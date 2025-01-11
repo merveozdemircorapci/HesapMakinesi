@@ -38,6 +38,7 @@ public class HesapMakinesi {
         WebElement sifir = driver.findElement(By.xpath("//div[17]"));
         WebElement cikarma = driver.findElement(By.cssSelector("div:nth-child(12)"));
 
+
         bir.click();
         sifir.click();
         sifir.click();
