@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
-public class HesapMakinesi {
+public class GunlukGiderTakibi {
 
     public static void main(String[] args) throws InterruptedException {
         WebDriverManager.chromedriver().setup();
