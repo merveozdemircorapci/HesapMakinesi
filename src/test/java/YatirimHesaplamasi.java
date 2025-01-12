@@ -5,19 +5,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-
-public class GunlukGiderTakibi {
-    //Günlük giderlerin girilerek toplama işleminin başarıyla yapılabildiği ve sonucun doğru olduğu görülmeli.
-    //20+10+5=35
-
+public class YatirimHesaplamasi {
+//100TL lik yatırımın %5 Faiz oranı ile 1 yıl sonraki değeri hesaplandığında "105" olarak geldiği görülmeli.
+//Formül: A=100×(1+(0.05×1))=100×1.05=105
     public static void main(String[] args) throws InterruptedException {
+
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
 
         driver.get("https://catchylabs-webclient.testinium.com/"); //bu adrese git
         driver.manage().window().maximize();
 
-        WebElement Username = driver.findElement(By.xpath("//input[@placeholder='Username']"));
+        WebElement Username = driver.findElement(By.xpath("//input[@placeholder='Username']"));   //elamanın id bilgisi yazılacak. Tarayıcıda ilgili anlanın sağ tik incele yapıldıüındaki İd bilgisi
         Username.click(); // kutucuğuan tıkla.
         Username.sendKeys("merve.ozdemir");  //senkeys alana girelecek değer bilgisi
 
@@ -25,7 +24,7 @@ public class GunlukGiderTakibi {
         Password.click();
         Password.sendKeys("Ozdemir3!");
 
-        WebElement Login = driver.findElement(By.xpath("//div[@class='css-146c3p1 r-jwli3a r-1b43r93']"));
+        WebElement Login = driver.findElement(By.xpath("//div[@class='css-146c3p1 r-jwli3a r-1b43r93']"));   //css ile yazdırma
         Login.click();
         Thread.sleep(1000);
 
@@ -40,27 +39,32 @@ public class GunlukGiderTakibi {
         WebElement sekiz = driver.findElement(By.xpath("//div[contains(text(),'8')]"));
         WebElement esittir = driver.findElement(By.cssSelector("div:nth-child(20) div:nth-child(1) div:nth-child(1)"));
         WebElement cikarma = driver.findElement(By.cssSelector("div:nth-child(12)"));
+        WebElement carpi = driver.findElement(By.cssSelector("div:nth-child(8)"));
         WebElement arti = driver.findElement(By.cssSelector("div:nth-child(16) div:nth-child(1) div:nth-child(1)"));
+        WebElement virgul = driver.findElement(By.xpath("//div[19]"));
 
-
-        iki.click();
         sifir.click();
+        virgul.click();
+        sifir.click();
+        bes.click();
+        carpi.click();
+        bir.click();
+        esittir.click();
         arti.click();
         bir.click();
+        carpi.click();
+        bir.click();
         sifir.click();
-        arti.click();
-        bes.click();
-        esittir.click();
+        sifir.click();
 
         Thread.sleep (1000);
-
         WebElement sonuc1 = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/div/div/div/div[1]/div/span"));
 
         System.out.println("Hesaplama işlemi tamamlandı.");
         String sonuc1text = sonuc1.getText();
-        System.out.println("Beklenen Sonuç: 35, Gerçekleşen Sonuç: " + sonuc1text);
+        System.out.println("Beklenen Sonuç: 105, Gerçekleşen Sonuç: " + sonuc1text);
         try {
-            Assert.assertEquals(sonuc1text, "= 35","Sonuç hatalı olarak hesaplanmıştır.");
+            Assert.assertEquals(sonuc1text, "= 105","Sonuç hatalı olarak hesaplanmıştır.");
         }
         catch (Exception e)
         {
